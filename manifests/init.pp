@@ -21,4 +21,13 @@ class java {
     mode    => 0755,
     require => Package['java']
   }
+
+  file { "/Library/Application Support/Oracle/Java/javaws":
+    ensure => absent
+  }
+
+  file { "/Library/Application Support/Oracle/Java/Info.plist":
+    ensure => link,
+    target => '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Disabled.plist'
+  }
 }
